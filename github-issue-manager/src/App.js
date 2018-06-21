@@ -6,10 +6,11 @@ class App extends Component {
 	constructor() {
 		super();
 		this.state = {
-			username: '',
-			id: '',
-			location: '',
-			avatar: ''
+			username: null,
+			id: null,
+			location: null,
+			avatar: null,
+			email: null
 		}
 	}
 
@@ -17,7 +18,6 @@ class App extends Component {
 		return fetch(`https://api.github.com/users/${ username }`)
 		.then( response => response.json() )
 		.then( response => {
-			console.log( "response: " , response )
 			return response;
 		})
 	}
@@ -25,8 +25,16 @@ class App extends Component {
 	async handleSubmit(e) {
 		e.preventDefault();
 		let user = await this.getUser( this.refs.username.value );
-		this.setState({ username: user.login, id: user.id, location: user.location, avatar: user.avatar_url })
-		console.log( "user " , user );
+		this.setState({
+			username:  user.login,
+			id:        user.id,
+			location:  user.location,
+			avatar:    user.avatar_url,
+			email:     user.email,
+			followers: user.followers,
+			following: user.following,
+			created:   user.created_at
+		})
 	}
 
 
@@ -35,24 +43,38 @@ class App extends Component {
 
 	render() {
 		let user;
+
+		if( this.state.username ) {
+			user = 
+			<section className="container">
+				<div>
+					<img className="avatar" src={ this.state.avatar } alt={ this.state.username} /> 
+				</div>
+				<p className="user-info">
+					<b>username:</b> { this.state.username }<br/>
+					<b>id:</b> { this.state.id }<br/>
+					<b>location:</b> { this.state.location }<br/>
+					<b>email:</b> { this.state.email }<br/>
+					<b>followers:</b> { this.state.followers }<br/>
+					<b>following:</b> { this.state.following }<br/>
+					<b>created account at:</b> { this.state.created }<br/>
+				</p>
+			</section>
+		}
+
 		return (
 			<div className="App">
 				<header className="App-header">
 					<img src={ logo } className="App-logo" alt="logo" />
-					<h1 className="App-title">Welcome to the jungle</h1>
+					<h1 className="App-title">Welcome to Github</h1>
 				</header>
 				<form onSubmit={ e => this.handleSubmit(e) }>
 					<input ref="username" type="text" placeholder="username" />
 				</form>
-				<p className="App inro">
-					{ this.state.username }<br/>
-					{ this.state.id }<br/>
-					{ this.state.location }<br/>
-				</p>
-
-				<img className="avatar" src={ this.state.avatar } alt={ this.state.username} />
-
-			</div>
+				<div className="App intro">
+					{ user }
+				</div>
+		</div>
 		);
 	}
 }
