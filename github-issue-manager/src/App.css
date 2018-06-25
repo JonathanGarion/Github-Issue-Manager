@@ -1,36 +1,83 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
 .App {
-  text-align: center;
+	display: flex;
+	flex-wrap: nowrap;
+	height: 100vh;
+	width: 100%;
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+	animation: App-logo-spin infinite 20s linear;
+	height: 80px;
 }
 
 .App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+	display: flex;
+	align-items: center;
+	flex-wrap: nowrap;
+	padding: 10px 20px;
+	background-color: #222;
+	height: 95px;
+	color: white;
 }
 
 .App-title {
-  font-size: 1.5em;
+	font-size: 1.5em;
 }
 
 .App-intro {
-  font-size: large;
+	font-size: large;
+}
+
+.aside {
+	width: 250px;
+	height: 100%;
+	background-color: #222;
+	color: white;
+	display: flex;
+	flex-direction: column;
+	padding: 95px 10px 0
+}
+
+.aside__menu {
+	list-style-type: none;
+	display: flex;
+	flex-direction: column;
+	padding: 10px;
+}
+
+.aside__menu-item {
+	padding: 0 0 10px;
+}
+
+.main {
+	width: calc(100% - 250px);
+	height: 100%;
+	overflow: hidden;
 }
 
 .container {
-	padding: 50px 20%;
 	display: flex;
 	justify-content: space-around;
+	flex-direction: column;
+	overflow: auto;
+}
+
+.intro {
+	padding: 30px 10%;
+	display: flex;
+	flex-direction: column;
 }
 
 .avatar {
 	width: 128px;
 	height: 128px;
+	padding: 0 20px 0 0;
 }
 
 .user-info {
@@ -39,7 +86,12 @@
 	padding: 0;
 }
 
+.user-container {
+	display: flex;
+	padding: 20px 0;
+}
+
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+	from { transform: rotate(0deg); }
+	to { transform: rotate(360deg); }
 }
