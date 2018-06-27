@@ -11,7 +11,8 @@ class Projects extends Component {
 	}
 
 	Projects(owner, repo) {
-		return fetch(`https://api.github.com//repos/${ owner }/${ repo }/projects/`)
+		// return fetch(`https://api.github.com//repos/${ owner }/${ repo }/projects/`)
+		return fetch(`https://api.github.com//users/JonathanGarion/repos/website/`)
 		.then( response => response.json() )
 		.then( response => {
 			return response;

@@ -38,6 +38,10 @@ class Login extends Component {
 
 		return (
 			<div className="container">
+				<header className="App-header">
+					<img src={ logo } className="App-logo" alt="logo" />
+					<h1 className="App-title"> {"login"} </h1>
+				</header>
 				{/* <form onSubmit={ e => this.handleSubmit(e) }> */}
 					<input ref="name" type="text" placeholder="username"/>
 				{/* </form> */}

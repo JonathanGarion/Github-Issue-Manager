@@ -18,9 +18,9 @@ class App extends Component {
 					</nav>
 				</aside>
 				<section className="main">
-					{/* <Projects /> */}
+					<Projects />
 					{/* <GetUser /> */}
-					<Login />
+					{/* <Login /> */}
 				</section>
 			</div>
 		);

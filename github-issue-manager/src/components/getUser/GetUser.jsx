@@ -42,13 +42,6 @@ class GetUser extends Component {
 		let user;
 		let status;
 
-
-		if(this.state.username == "JonathanGarion") {
-			status = "Front-End"
-		} else {
-			status = "noobert doobert"
-		}
-
 		if( this.state.username ) {
 			user =
 			<section className="user-container">
@@ -63,7 +56,6 @@ class GetUser extends Component {
 					<b>followers:</b> { this.state.followers }<br/>
 					<b>following:</b> { this.state.following }<br/>
 					<b>created account at:</b> { this.state.created }<br/>
-					<b>status:</b> {status}<br/>
 				</p>
 			</section>
 		}
